@@ -1,0 +1,23 @@
+CREATE TABLE blockbuster (id INTEGER, item TEXT, release_year INTEGER, type TEXT, genre TEXT, price INTEGER);
+
+INSERT INTO blockbuster VALUES (1, "Superbad", 2009, "movie", "comedy", 5);
+INSERT INTO blockbuster VALUES (2, "Cabin in the Woods", 2011, "movie", "horror", 5);
+INSERT INTO blockbuster VALUES (3, "Into the Wild", 2007, "movie", "drama", 4);
+INSERT INTO blockbuster VALUES (4, "Last of Us", 2013, "game", "action", 20);
+INSERT INTO blockbuster VALUES (5, "Crash Bandicoot", 2017, "game", "platform", 15);
+INSERT INTO blockbuster VALUES (6, "Master and Commander", 2003, "movie", "drama", 2);
+INSERT INTO blockbuster VALUES (7, "Napoleon Dynamite", 2004, "movie", "comedy", 2);
+INSERT INTO blockbuster VALUES (8, "Star Wars: A New Hope", 1977, "movie", "action", 8);
+INSERT INTO blockbuster VALUES (9, "Harry Potter and the Sorcerer's Stone", 2001, "movie", "drama", 5);
+INSERT INTO blockbuster VALUES (10, "Zombieland", 2009, "movie", "action", 4);
+INSERT INTO blockbuster VALUES (11, "The Commitments", 1991, "movie", "comedy", 3);
+INSERT INTO blockbuster VALUES (12, "Hitchhiker's Guide to the Galaxy", 2005, "movie", "sci-fi", 6);
+INSERT INTO blockbuster VALUES (13, "Star Wars Battlefront", 2015, "game", "action", 15);
+INSERT INTO blockbuster VALUES (14, "Young Frankenstein", 1974, "movie", "comedy", 8);
+INSERT INTO blockbuster VALUES (15, "3:10 to Yuma", 2007, "movie", "action", 3);
+
+--display the database ordered by price
+SELECT * FROM blockbuster ORDER BY price ASC;
+
+--display all of the action genre items ordered by their corresponding release year
+SELECT * FROM blockbuster WHERE genre = "action" ORDER BY release_year ASC;
