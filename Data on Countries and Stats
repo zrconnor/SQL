@@ -1,5 +1,3 @@
-/* Put your data in here and query it! */
-
 /*
  Countries and dependent territories, 2020
  Data adapted from
@@ -231,7 +229,7 @@ SELECT name, median_age FROM countries;
 
 SELECT name,percent_one_year_change FROM countries GROUP BY percent_one_year_change HAVING percent_one_year_change >= 0;
 
-SELECT COUNT(*),
+SELECT COUNT(*) AS countries,
 CASE
 WHEN median_age > 40 THEN "Older population"
 WHEN median_age > 30 THEN "Middle-aged population"
@@ -239,3 +237,5 @@ ELSE "Younger population"
 END AS "age_demographic"
 FROM countries
     group by age_demographic;
+
+SELECT name,population_change,net_migrants FROM countries WHERE population_change > 100000 AND net_migrants > 0 ORDER BY population_change DESC;
