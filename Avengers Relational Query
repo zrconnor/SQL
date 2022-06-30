@@ -1,0 +1,78 @@
+/* Create table about the people and what they do here */
+
+/* AVENGERS ASSEMBLE */
+
+CREATE TABLE actors (id INTEGER PRIMARY KEY,
+name TEXT,
+character_name TEXT,
+superhero_name TEXT);
+
+INSERT INTO actors (name, character_name, superhero_name)
+VALUES ("Robert Downey Jr", "Tony Stark", "Iron Man");
+INSERT INTO actors (name, character_name, superhero_name)
+VALUES ("Gwenyth Paltrow", "Pepper Potts", NULL);
+INSERT INTO actors (name, character_name, superhero_name)
+VALUES ("Samuel L. Jackson", "Nick Fury", NULL);
+INSERT INTO actors (name, character_name, superhero_name)
+VALUES ("Clark Gregg", "Phil Coulson", NULL);
+INSERT INTO actors (name, character_name, superhero_name)
+VALUES ("Scarlett Johansson", "Natasha Romanoff", "Black Widow");
+INSERT INTO actors (name, character_name, superhero_name)
+VALUES ("Chris Hemsworth", "Thor Odinson", "Thor");
+INSERT INTO actors (name, character_name, superhero_name)
+VALUES ("Tom Hiddleston", "Loki Odinson", "Loki");
+INSERT INTO actors (name, character_name, superhero_name)
+VALUES ("Jeremy Renner", "Clint Barton", "Hawkeye");
+INSERT INTO actors (name, character_name, superhero_name)
+VALUES ("Chris Evans", "Steve Rogers", "Captain America");
+INSERT INTO actors (name, character_name, superhero_name)
+VALUES ("Mark Ruffalo", "Bruce Banner", "Hulk");
+
+CREATE TABLE movies (id INTEGER PRIMARY KEY,
+title TEXT);
+
+INSERT INTO movies (title)
+VALUES ("Iron Man");
+INSERT INTO movies (title)
+VALUES ("Iron Man 2");
+INSERT INTO movies (title)
+VALUES ("Thor");
+INSERT INTO movies (title)
+VALUES ("Captain America: The First Avenger");
+INSERT INTO movies (title)
+VALUES ("Avengers");
+
+CREATE TABLE first_appearance (id INTEGER PRIMARY KEY,
+actors_id INTEGER,
+movies_id INTEGER);
+
+INSERT INTO first_appearance (actors_id, movies_id)
+VALUES (1, 1);
+INSERT INTO first_appearance (actors_id, movies_id)
+VALUES (2, 1);
+INSERT INTO first_appearance (actors_id, movies_id)
+VALUES (3, 1);
+INSERT INTO first_appearance (actors_id, movies_id)
+VALUES (4, 1);
+INSERT INTO first_appearance (actors_id, movies_id)
+VALUES (5, 2);
+INSERT INTO first_appearance (actors_id, movies_id)
+VALUES (6, 3);
+INSERT INTO first_appearance (actors_id, movies_id)
+VALUES (7, 3);
+INSERT INTO first_appearance (actors_id, movies_id)
+VALUES (8, 3);
+INSERT INTO first_appearance (actors_id, movies_id)
+VALUES (9, 4);
+INSERT INTO first_appearance (actors_id, movies_id)
+VALUES (10, 5);
+
+SELECT a.name, a.character_name, m.title AS first_appearance
+FROM first_appearance
+JOIN actors a
+ON first_appearance.actors_id = a.id
+JOIN movies m
+ON first_appearance.movies_id = m.id;
+
+
+
