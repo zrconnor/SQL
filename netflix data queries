@@ -1,0 +1,25 @@
+#In this SQL code, I'm querying a database that's holding Nexflix data to answer questions about the data. 
+
+SELECT "title", "director", "cast", "duration"
+FROM "CharlotteChaze/BreakIntoTech"."netflix_people" JOIN "CharlotteChaze/BreakIntoTech"."netflix_titles_info" 
+ON "netflix_people"."show_id" = "netflix_titles_info"."show_id";
+
+--How many movie titles are there in the database? (movies only, not tv shows)
+SELECT COUNT(type) FROM "CharlotteChaze/BreakIntoTech"."netflix_titles_info" titles WHERE type = 'Movie';
+--6131
+
+--When was the most recent batch of tv shows and/or movies added to the database?
+SELECT type, MAX(date(date_added)) FROM "CharlotteChaze/BreakIntoTech"."netflix_titles_info" GROUP BY type;
+-- Movies - 2021-09-25
+-- TV Show - 2021-09-24
+
+-- List all the movies and tv shows in alphabetical order.
+-- SELECT title, type FROM "CharlotteChaze/BreakIntoTech"."netflix_titles_info" ORDER BY title;
+
+-- Who was the Director for the movie Bright Star?
+-- SELECT titles.title, people.director FROM "CharlotteChaze/BreakIntoTech"."netflix_titles_info" titles LEFT JOIN "CharlotteChaze/BreakIntoTech"."netflix_people" people ON titles.show_id = people.show_id WHERE titles.title = 'Bright Star';
+-- Jane Campion
+
+-- What is the oldest movie in the database and what year was it made?
+-- SELECT title, release_year FROM "CharlotteChaze/BreakIntoTech"."netflix_titles_info" WHERE type = 'Movie' AND release_year = (SELECT MIN(release_year) FROM "CharlotteChaze/BreakIntoTech"."netflix_titles_info" WHERE type = 'Movie');
+-- Prelude to War & The Battle of Midway both were released in 1942
