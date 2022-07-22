@@ -1,0 +1,47 @@
+# For this project, I downloaded Spotify data from Kaggle.
+# Then I created a table to insert Spotify data into.
+# Finally, I performed analytics on the data using SQL. 
+
+#Creating the table
+CREATE TABLE BIT_DB.Spotifydata (
+id integer PRIMARY KEY,
+artist_name varchar NOT NULL,
+track_name varchar NOT NULL,
+track_id varchar NOT NULL,
+popularity integer NOT NULL,
+danceability decimal(4,3) NOT NULL,
+energy decimal(4,3) NOT NULL,
+key integer NOT NULL,
+loudness decimal(5,3) NOT NULL,
+mode integer NOT NULL,
+speechiness decimal(5,4) NOT NULL,
+acousticness decimal(6,5) NOT NULL,
+instrumentalness text NOT NULL,
+liveness decimal(5,4) NOT NULL,
+valence decimal(4,3) NOT NULL,
+tempo decimal(6,3) NOT NULL,
+duration_ms integer NOT NULL,
+time_signature integer NOT NULL 
+);
+
+#Then, I inserted the Spotify data .csv into the table & proceeded to query the entire dataset
+SELECT * from BIT_DB.Spotifydata;
+
+#Then, I queried the top 10 most popular artists
+SELECT artist_name, track_name, popularity 
+FROM BIT_DB.Spotifydata
+ORDER BY popularity DESC
+LIMIT 10;
+
+#Then, I queried the average duration
+SELECT AVG(duration_ms) as avg_duration_ms
+FROM BIT_DB.Spotifydata;
+
+#Then, I queried the average tempo
+SELECT AVG(tempo) as avg_tempo
+FROM BIT_DB.Spotifydata;
+
+#Finally, I compiled the average popularity, danceability, energy and loudness for each track
+SELECT artist_name, track_name, avg(popularity), avg(danceability), avg(energy), avg(loudness)
+FROM BIT_DB.Spotifydata
+GROUP BY artist_name, track_name;
